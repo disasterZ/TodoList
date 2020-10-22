@@ -1,6 +1,6 @@
 import React, { Component , Fragment } from 'react';
-import './style.css';
 import TodoItem from './TodoItem';
+import './style.css';
 
 class TodoList extends Component {
     
@@ -9,7 +9,10 @@ class TodoList extends Component {
         this.state = {
             inputValue:'',
             list:[],
-        }
+        };
+        this.handleInputChange=this.handleInputChange.bind(this);
+        this.handleBtnClick=this.handleBtnClick.bind(this);
+        this.handleDelete=this.handleDelete.bind(this);
     } 
 
     render() {
@@ -22,9 +25,9 @@ class TodoList extends Component {
                         id='insert'
                         className='input'
                         value={this.state.inputValue} 
-                        onChange={this.handleInputChange.bind(this)}
+                        onChange={this.handleInputChange}
                     />
-                    <button onClick={this.handleBtnClick.bind(this)}>
+                    <button onClick={this.handleBtnClick}>
                         提交
                     </button>
                 </div>
@@ -36,7 +39,7 @@ class TodoList extends Component {
                                             key={index}
                                             content={item} 
                                             index={index}
-                                            deleteItem={this.handleDelete.bind(this)}
+                                            deleteItem={this.handleDelete}
                                         />
                                 ) 
                         })
@@ -47,23 +50,24 @@ class TodoList extends Component {
     }
 
     handleInputChange(e){
-        this.setState({
-            inputValue:e.target.value
-        })
+        const value=e.target.value
+        this.setState(()=>({
+            inputValue:value
+        }))
     }
 
     handleBtnClick(){
-        this.setState({
-            list:[...this.state.list,this.state.inputValue],
+        this.setState((prevState)=>({
+            list:[...prevState.list,prevState.inputValue],
             inputValue:'',
-        })
+        }))
     }
 
     handleDelete(index){
-        const list=[...this.state.list];
-        list.splice(index,1);
-        this.setState({
-            list:list,
+        this.setState((prevState)=>{
+            const list=[...prevState.list];
+            list.splice(index,1);
+            return {list}
         })
     }
 }
