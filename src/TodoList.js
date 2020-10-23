@@ -1,5 +1,6 @@
 import React, { Component , Fragment } from 'react';
 import TodoItem from './TodoItem';
+import Test from './Test'
 import './style.css';
 
 class TodoList extends Component {
@@ -18,6 +19,7 @@ class TodoList extends Component {
     render() {
         return (
             <Fragment>
+                {/* JSX->createElemnt->虚拟DOM（JS对象）->真实的DOM */}
                 <div>
                     {/*这是一条注释*/}
                     <label htmlFor="insert">输入内容</label>
@@ -45,6 +47,7 @@ class TodoList extends Component {
                         })
                     }
                 </ul>
+                <Test content={this.state.inputValue}/>
             </Fragment>
         )
     }
