@@ -1,5 +1,6 @@
 import React, { Component , Fragment } from 'react';
 import TodoItem from './TodoItem';
+import axios from 'axios';
 import './style.css';
 
 class TodoList extends Component {
@@ -49,6 +50,16 @@ class TodoList extends Component {
                 </ul>
             </Fragment>
         )
+    }
+
+    componentDidMount(){
+        axios.get('/api/todolist')
+            .then((res)=>{
+                this.setState(()=>({
+                    list:[...res.data]
+                }))
+            })
+            .catch(()=>{alert('error')})
     }
 
     handleInputChange(){

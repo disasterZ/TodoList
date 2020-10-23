@@ -6,8 +6,8 @@ import TodoList from './TodoList';
 
 ReactDOM.render(
   <React.StrictMode>
-    <LifeCycle />
     <TodoList />
+    <LifeCycle />
   </React.StrictMode>,
   document.getElementById('root')
 );
