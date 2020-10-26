@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Input, Button, List } from 'antd';
+import React, { Component} from 'react';
+import TodoListUI from './TodoListUI';
 import 'antd/dist/antd.css';
 import store from './store';
 import {getInputChangeAction,getAddItemAction,getDeleteItemAction} from './store/actionCreateor'
@@ -16,32 +16,16 @@ class TodoList extends Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        <div style={{ marginTop: '10px', marginLeft: '10px' }}>
-          <Input
-            value={this.state.inputValue}
-            placeholder="todo info"
-            style={{ width: '300px' }}
-            onChange={this.handleInputChange}
-          />
-          <Button
-            type='primary'
-            style={{ marginLeft: '10px' }}
-            onClick={this.handleBtnClick}
-          >提交</Button>
-        </div>
-        <List
-          style={{ marginTop:10,marginLeft: '10px', width: '300px' }}
-          bordered
-          dataSource={this.state.List}
-          renderItem={(item,index) => (
-            <List.Item onClick={this.handleItemClick.bind(this,index)}>
-              {item}
-            </List.Item>
-          )}
-        />
-      </Fragment>
+    return(
+      <TodoListUI 
+        inputValue={this.state.inputValue}
+        List={this.state.List}
+        //
+        handleBtnClick={this.handleBtnClick}
+        handleInputChange={this.handleInputChange}
+        handleItemClick={this.handleItemClick}
+      >
+      </TodoListUI>
     )
   }
 
