@@ -1,5 +1,4 @@
-import TodoList from '../TodoList';
-import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM, INIT_LIST_ACTION} from './actionTypes';
+import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM, GET_INIT_LIST, INIT_LIST_ACTION} from './actionTypes';
 const defaultState={
     inputValue:'',
     List:[]
