@@ -1,8 +1,8 @@
 import TodoList from '../TodoList';
-import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './actionTypes';
+import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM, INIT_LIST_ACTION} from './actionTypes';
 const defaultState={
     inputValue:'',
-    List:["112"]
+    List:[]
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -19,6 +19,10 @@ export default (state = defaultState,action)=>{
     }
     if(action.type === DELETE_TODO_ITEM){
         newState.List.splice(action.index,1);
+        return newState;
+    }
+    if(action.type === INIT_LIST_ACTION){
+        newState.List = action.data;
         return newState;
     }
     return state;
